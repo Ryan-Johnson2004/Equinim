@@ -1,0 +1,70 @@
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    text-align: center;
+}
+
+/* Header Styling */
+h1 {
+    font-size: 2rem;
+    color: #2c3e50;
+    margin: 20px 0;
+}
+
+/* Car Container Styling */
+.shopItem {
+    display: inline-block;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 300px;
+    text-align: center;
+}
+
+/* Image Styling */
+.shopItem img {
+    max-width: 100%;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+/* Button Styling */
+.shopItem button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.shopItem button:hover {
+    background-color: #2980b9;
+}
+
+/* Button i */
+.shopItem button:nth-child(3) {
+    background-color: #e67e22;
+}
+
+.shopItem button:nth-child(3):hover {
+    background-color: #d35400;
+}
+.price  {
+    color: #d35400;
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: -10px;
+    margin-bottom: 10px;
+
+}
