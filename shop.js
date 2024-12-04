@@ -1,8 +1,4 @@
 // start off with manually adding items with an id
-
-
-
-
 cart = []
 itemDatabase = [] // pretend this is a backend database
 totalPrice = 0
@@ -11,6 +7,7 @@ totalPrice = 0
 
 function fetchItems(){
 
+    // pretend this is coming from a backend database
     const jsonFromDatabase = `
     {
     "items":[
@@ -34,10 +31,11 @@ function setupListener(button){
         try{
             let numItems = itemDatabase.items.length -1
             itemID = event.target.parentElement.id;
-            
+
+            //this loops through the object containing all the tiems and checks for a match on the ids.
+                    // if it finds a match , it adds a number onto the total
             for(let i = 0; i <= numItems;i +=1){
-                console.log(event.target.parentElement.id)
-                console.log(itemDatabase.items[i].id)
+
                 if(itemDatabase.items[i].id == event.target.parentElement.id){
                     console.log( itemDatabase.items[i].price)
                     totalPrice += itemDatabase.items[i].price;
@@ -48,7 +46,7 @@ function setupListener(button){
 
             }
             
-            console.log(totalPrice)
+
         }
         catch(err){
             console.log(err);
@@ -57,6 +55,7 @@ function setupListener(button){
     });
 }
 
+//this function runs after all of the click logic is complete to ensure we see our total Price increasing.
 function updateUI(){
     document.getElementById("cart").innerHTML = `Cart:$${totalPrice}`;
 
@@ -72,12 +71,17 @@ function setupButtons(){
             let itemChildren = allItems[i].children;
             let buyButton;
             for(x = 0; x <= (itemChildren.length-1); x += 1){
+
+                //use the contains() function for checking if an elemnet has a class attached to it
+                //use includes when checking ifa string includes a certain word.
                 
                 if(itemChildren[x].classList.contains("buyCar")){
                     
                     buyButton = itemChildren[x];
                 }
             }
+            //before adding an event listener onto the buttons it checks if the button exists.
+            
             if(buyButton === undefined){
                 throw("Error missing button!");
             }
@@ -93,7 +97,10 @@ function setupButtons(){
 
 
 function constructUI(itemDatabase){
-
+    // this functions gets the number of items in our items object 
+        // for each item it create a container (div)
+        // and adds in ui elements as well as relevant ids,classes, innerHtml
+    // after it finishes, it runs the function to setup event listeners for the buttons so they can work 
     let items = itemDatabase.items;
     for(let i=0;i <= items.length-1; i +=1){
 
@@ -123,7 +130,31 @@ function constructUI(itemDatabase){
 
 }
 
+
+// The program starts off by fetching items from our mock backend database.
 itemDatabase = fetchItems();
 
+//Depending on the number of the items, it dynamically constructs UI elements
+    // there is a function within the function that adds event listeners to all the buttons
 constructUI(itemDatabase);
 
+
+
+// While this lesson may seem similar to previous examples (another online store)
+    // It is actually quite different. In this case, we wil be dynamically constructing UI elements based ona "mock database"
+    // This will help you start to understand the mindset of server side code and browser code.
+
+
+
+// Both of these are Backend Code they just run in the same location. 
+
+// Browser JavaScript handles things like 
+    //Visual Interactivity (popups appearing when you  click on more info)
+    // Animations
+    // Validating data before sending it to the server (checking if user has entered in the correct format)
+
+// Server side Javascript handles things like
+        //getting data from the database
+        //sending a file from the user to download 
+        // authentication and security
+        // handling important/secretive logic (eg search engine algorithms wouldnt be on the browser regardless of what language they are written in)
